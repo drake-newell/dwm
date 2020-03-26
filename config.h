@@ -28,7 +28,8 @@ static char *colors[][3] = {
 
 /* tagging */
 /* static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }; */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -41,8 +42,7 @@ static const Rule rules[] = {
 	{ "Signal",  NULL,       NULL,        1 << 3,       0,           -1 },
 	{ "Tor Browser",  NULL,       NULL,        1 << 7,       0,           -1 },
 	{ "Emacs",  NULL,       NULL,        1 << 4,       0,           -1 },
-
-
+	{ "Zathura",  NULL,       NULL,        1 << 6,       0,           -1 },
 
 };
 
@@ -174,6 +174,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_v,		spawn,		SHCMD("st -e $EDITOR -c \"VimwikiIndex\"") },
 	{ MODKEY|ShiftMask,		XK_v,		spawn,		SHCMD("{ killall xcompmgr || setsid xcompmgr & } ; xwallpaper --zoom ~/.config/wall.png") },
 	{ MODKEY,			XK_b,		togglebar,	{0} },
+	{ MODKEY|Mod1Mask,		XK_b,		togglealttag,	{0} },
 	{ MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("hover left") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("hover right") },
@@ -263,7 +264,6 @@ static Key keys[] = {
 	/* { MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } }, */
 	/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
-
 
 };
 
