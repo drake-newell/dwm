@@ -12,8 +12,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
-static const char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
-static char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "monospace:size=11", "FontAwesome:pixelsize=12:antialias=true:autohint=true"  };
+static char dmenufont[]       = "monospace:size=11";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -27,7 +27,8 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+/* static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }; */
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -36,7 +37,13 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	/* { "Gimp",     NULL,       NULL,       0,            1,           -1 }, */
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Brave",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Signal",  NULL,       NULL,        1 << 3,       0,           -1 },
+	{ "Tor Browser",  NULL,       NULL,        1 << 7,       0,           -1 },
+	{ "Emacs",  NULL,       NULL,        1 << 4,       0,           -1 },
+
+
+
 };
 
 /* layout(s) */
@@ -106,21 +113,22 @@ static Key keys[] = {
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("amixer sset Master 5%+ ; pkill -RTMIN+10 dwmblocks") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("amixer sset Master 15%+ ; pkill -RTMIN+10 dwmblocks") },
 	/* { MODKEY,			XK_BackSpace,	spawn,		SHCMD("") }, */
-	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Reboot computer?\")\" = Yes ] && sudo -A reboot") },
+	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Reboot computer?\")\" = Yes ] && sudo -A openrc-shutdown -r") },
 
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
-	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("st -e sudo nmtui") },
+	{ MODKEY,			XK_w,		spawn,		SHCMD("search") },
+	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("tutorialvids") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e lf") },
+	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e ranger") },
 	/* { MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,		XK_t,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_y,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[4]} },
 	/* { MODKEY|ShiftMask,		XK_y,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_u,		setlayout,	{.v = &layouts[2]} },
 	/* { MODKEY|ShiftMask,		XK_u,		spawn,		SHCMD("") }, */
@@ -160,7 +168,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_z,		incrgaps,	{.i = -1 } },
 	{ MODKEY,			XK_x,		spawn,		SHCMD("slock & xset dpms force off; mpc pause ; pauseallmpv") },
-	{ MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Shutdown computer?\")\" = Yes ] && sudo -A shutdown -h now") },
+	{ MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Shutdown computer?\")\" = Yes ] && sudo -A openrc-shutdown -p") },
 	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
 	{ MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title=mpvfloat $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,			XK_v,		spawn,		SHCMD("st -e $EDITOR -c \"VimwikiIndex\"") },
@@ -180,18 +188,23 @@ static Key keys[] = {
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = 1 } },
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("dmd") },
+	{ MODKEY|ShiftMask,		XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
 	{ MODKEY,			XK_F2,		quit,		{0} },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("[ \"$(printf \"No\\nYes\" | dmenu -i -nb darkred -sb red -sf white -nf gray -p \"Hibernate computer?\")\" = Yes ] && sudo -A zzz") },
 	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
+	{ MODKEY,			XK_F8,		spawn,		SHCMD("suck") },
+	{ MODKEY|ShiftMask,		XK_F8,		spawn,		SHCMD("comp") },
+
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
-	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_F12,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_F11,		spawn,		SHCMD("ebooks") },
+	{ MODKEY,			XK_F12,		spawn,		SHCMD("bookmarks") },
+	{ MODKEY|ShiftMask,		XK_F12,		spawn,		SHCMD("st -e sudo nmtui") },
+
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
