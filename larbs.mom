@@ -314,6 +314,17 @@ LARBS is deployed as a git repository in your home directory.
 You can use it as such to fetch, diff and merge changes from the remote repository.
 If you don't want to do that or don't know how to use git, you can actually just rerun the script (as root) and reinstall LARBS and it will automatically update an existing install if you select the same username.
 This will overwrite the original config files though, including changes you made for them, but this is an easier brute force approach that will also install any new dependencies.
+.HEADING 1 "Using LARBS on other distros"
+.HEADING 2 "What if I don't use Arch btw?"
+.PP
+If you don't use Arch, you may experience some occasional issues with LARBS since it is designed to work best on Arch.
+But what if I use Void/Parabola/Manjaro/[insert distro here]? Fear not. some users of LARBS tried their best to create documentation to make LARBS work on other distros.
+.HEADING 2 "Using LARBS on Parabola:"
+.PP
+So you've chosen to take the RMS-pill. Having a completely libre OS is pretty great, but as a result there are a few differences in package availability.
+.HEADING 2 "Using LARBS on Void:"
+.PP
+So you've entered the Void. Void is a very nice minimal distro, but since Void does not have access to the AUR, there may be some packages, like \f(CWlibXft-bgra\fP, that are not available. Void also has a very minimal install from default and is missing some packages that LARBS may require.
 .HEADING 1 "Contact"
 .LI
 .ITEM
