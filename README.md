@@ -1,6 +1,6 @@
-# Luke's build of dwm
+# Drake's fork of Luke Smith's build of dwm
 
-Here's my build of dwm.
+Here's my build of dwm, based on Luke's build.
 
 ## FAQ
 
@@ -19,7 +19,8 @@ This is suckless, mmmbud, the source code is the documentation! Check out `confi
 - shiftview to cycle tags
 - gaps around windows and bar
 - dwmc
+- alternativetags patch
 
-## Please install `libxft-rbgra`!
+## Please install `libxft-bgra`!
 
-This build of dwm does not block color emoji in the status/info bar, so you must install [libxft-rbgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes a libxft color emoji rendering problem, otherwise dwm will crash upon trying to render one. Hopefully this fix will be in all libxft soon enough.
+This build of dwm does not block color emoji in the status/info bar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes a libxft color emoji rendering problem, otherwise dwm will crash upon trying to render one. Hopefully this fix will be in all libxft soon enough.
