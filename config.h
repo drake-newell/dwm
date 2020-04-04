@@ -58,7 +58,7 @@ static const Layout layouts[] = {
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
  	{ "[@]",      spiral },
- 	{ "[\\]",      dwindle },
+	{ "[D]",      deck },
 };
 
 /* key definitions */
@@ -118,7 +118,6 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("") }, */
-<<<<<<< HEAD
 	{ MODKEY,			XK_w,		spawn,		SHCMD("search") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD("esp") },
@@ -126,6 +125,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e ranger") },
 	/* { MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[5]} },
 	/* { MODKEY|ShiftMask,		XK_t,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_y,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[4]} },
