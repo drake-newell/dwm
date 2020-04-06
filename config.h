@@ -43,6 +43,8 @@ static const Rule rules[] = {
 	{ "Tor Browser",  NULL,       NULL,        1 << 7,       0,           -1 },
 	{ "Emacs",  NULL,       NULL,        1 << 4,       0,           -1 },
 	{ "Zathura",  NULL,       NULL,        1 << 6,       0,           -1 },
+	{ "Kunst",  NULL,       NULL,       1<<2,       1,           -1 },
+
 };
 
 /* layout(s) */
@@ -179,6 +181,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("hover right") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
+	{ MODKEY|Mod1Mask,		XK_m,		spawn,		SHCMD("mpc-notify") },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("lmc toggle") },
 	{ MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
 	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },
